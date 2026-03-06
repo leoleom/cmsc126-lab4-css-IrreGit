@@ -36,20 +36,34 @@ Focus on applying proper CSS techniques such as:
 /* ASSETS
 
 COLORS:
-#a38a59 - Grey Orange
-#c5b388 - Lighter Grey Orange
-#9ca795 - Grey green/blueish
-#f5eee6 - off white (orange tinge)
-#181716 - black (dark grey)
 
- TITLES and EMPHASIS
+use these for backgrounds / design
+#a38a59 - Grey Orange
+#bb6d46 - Dark Grey Orange
+#c5b388 - Lighter Grey Orange
+#e3c19d - Pastel Grey Orange
+#712f2e - Dull Red                   ;use for bands
+
+use for small details
+#8a171f - Red
+#927674 - Grey Red
+#282120 - Dark grey Red
+#9ca795 - Grey green/blueish
+
+
+#f5eee6 - off white (orange tinge)    ; use for paragraphs / title
+#181716 - black (dark grey)           ; use for accent 
+
+
+
+ TITLES and EMPHASIS FONT
  {
   font-family: "Darumadrop One", sans-serif;
   font-weight: 400;
   font-style: normal;
   }
 
-  PARAGRAPHS
+  PARAGRAPH FONT
   {
   font-family: "Zen Maru Gothic", sans-serif;
   font-weight: 900;
