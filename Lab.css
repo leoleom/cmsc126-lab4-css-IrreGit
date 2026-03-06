@@ -37,23 +37,25 @@ Focus on applying proper CSS techniques such as:
 
 COLORS:
 
-use these for backgrounds / design
+------------- backgrounds / bands-------------
 #a38a59 - Grey Orange
 #bb6d46 - Dark Grey Orange
 #c5b388 - Lighter Grey Orange
 #e3c19d - Pastel Grey Orange
-#712f2e - Dull Red                   ;use for bands
+#712f2e - Dull Red                   ;use for bands mainly, don't use as bg color
 
-use for small details
+------------- small details -------------
+#bdb487 - Light Brown                ;use for lines 
+#cfc49c - Beige                      ;can be used for bands
+#c5b388 - Lighter Grey Orange
 #8a171f - Red
 #927674 - Grey Red
 #282120 - Dark grey Red
 #9ca795 - Grey green/blueish
 
-
+------------- TEXTS -------------
 #f5eee6 - off white (orange tinge)    ; use for paragraphs / title
 #181716 - black (dark grey)           ; use for accent 
-
 
 
  TITLES and EMPHASIS FONT
@@ -75,3 +77,7 @@ use for small details
 
  /* Importing the two fonts */
 @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+
+
+
