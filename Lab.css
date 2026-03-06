@@ -68,16 +68,42 @@ COLORS:
   PARAGRAPH FONT
   {
   font-family: "Zen Maru Gothic", sans-serif;
-  font-weight: 900;
+  font-weight: 400;
   font-style: normal;
   }
  
 
  */
 
- /* Importing the two fonts */
+ /* ------------- IMPORTS ------------- */
 @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
 
 
+ /* ------------- PRESETS (Note: DO NOT TOUCH THIS AREA)------------- */
+body {
+  background-color: #a38a59;
+}
+
+p {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 600;
+    color: #f5eee6;
+   }
 
 
+
+
+
+
+
+/* ------------- HOME PAGE (MEMBER 1)------------- */
+
+
+
+
+/* ------------- ORDER PAGE (MEMBER 2)------------- */
+
+
+
+
+/* ------------- ABOUT PAGE (MEMBER 3)------------- */
