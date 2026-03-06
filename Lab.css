@@ -30,3 +30,34 @@ Focus on applying proper CSS techniques such as:
 - Alignment
 
 */
+
+
+
+/* ASSETS
+
+COLORS:
+#a38a59 - Grey Orange
+#c5b388 - Lighter Grey Orange
+#9ca795 - Grey green/blueish
+#f5eee6 - off white (orange tinge)
+#181716 - black (dark grey)
+
+ TITLES and EMPHASIS
+ {
+  font-family: "Darumadrop One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
+
+  PARAGRAPHS
+  {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  }
+ 
+
+ */
+
+ /* Importing the two fonts */
+@import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
