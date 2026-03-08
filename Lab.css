@@ -74,6 +74,14 @@ COLORS:
  
 
  */
+/* define variables here for general usage... */
+:root{
+   --sidepanel-width: 22%;
+   --sidepanel-minwidth: 300px;
+   --banner-maxheight: 200px;
+   --banner-height: 14%; 
+   --body-padding: 20px;
+}
 
  /* ------------- IMPORTS ------------- */
 @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
@@ -82,7 +90,62 @@ COLORS:
  /* ------------- PRESETS (Note: DO NOT TOUCH THIS AREA)------------- */
 body {
   background-color: #a38a59;
+
+   margin: 0;
+   padding: 0;
+   padding-left: calc(max(var(--sidepanel-width), var(--sidepanel-minwidth)) + var(--body-padding));
+   padding-right: var(--body-padding);
+   padding-top: 200px;
+
+   text-align: center;
+
+   max-width: calc(100% - var(--sidepanel-width));
+   overflow-x: hidden;
 }
+
+/* The Side Panel: used by all pages */
+header, .navBar, footer{
+   z-index: 10;
+   position: fixed;
+   left: 0;
+
+   width: var(--sidepanel-width);
+   min-width: var(--sidepanel-minwidth);
+   height: auto;
+   
+   margin: 5px 0;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+
+   box-sizing: border-box;
+}
+header{top: 20%}
+.navBar {top: 40%; gap: 25px;}
+footer {bottom: 15%;}
+
+#banner {
+   position: absolute;
+
+   top: 0;
+   left: max(var(--sidepanel-width), var(--sidepanel-minwidth));
+   margin-top: 0;
+   display: block;
+
+   object-fit: cover;
+   object-position: center 75%;
+
+   height: 200px;
+   width: calc(100% - max(var(--sidepanel-width), var(--sidepanel-minwidth)));
+
+   box-sizing: border-box;
+   z-index: -1;
+}
+
+
 
 p {
     font-family: "Zen Maru Gothic", sans-serif;
