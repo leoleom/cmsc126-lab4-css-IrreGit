@@ -253,6 +253,25 @@ body.order::before {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 20px;
+    
+    /* Hide the text by default but keep its spacing */
+    opacity: 0;
+    transform: translateY(-10px); /* Starts slightly shifted up */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* If an image in a specific column is hovered, reveal the label 
+   in the exact same column in the row immediately below it. */
+.order tr:has(td:nth-child(1):hover) + tr td.label:nth-child(1),
+.order tr:has(td:nth-child(2):hover) + tr td.label:nth-child(2),
+.order tr:has(td:nth-child(3):hover) + tr td.label:nth-child(3),
+.order tr:has(td:nth-child(4):hover) + tr td.label:nth-child(4),
+.order tr:has(td:nth-child(5):hover) + tr td.label:nth-child(5),
+.order tr:has(td:nth-child(6):hover) + tr td.label:nth-child(6),
+.order tr:has(td:nth-child(7):hover) + tr td.label:nth-child(7),
+.order td.label:hover {  /* Keeps it visible if the mouse moves down onto the text */
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* TWO-COLUMN FORM */
