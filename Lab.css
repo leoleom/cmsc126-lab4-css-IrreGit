@@ -260,9 +260,13 @@ body.order::before {
     padding-top: 10px;
     padding-bottom: 0px;
     
+    /* Allow text to wrap and constrain column width */
+    white-space: normal; 
+    width: 150px; 
+    
     /* Hide the text by default but keep its spacing */
     opacity: 0;
-    transform: translateY(-10px); /* Starts slightly shifted up */
+    transform: translateY(-10px); 
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
