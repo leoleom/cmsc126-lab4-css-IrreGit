@@ -226,7 +226,7 @@ body.order::before {
     font-family: "Darumadrop One", sans-serif;
     font-size: 1.8rem;
     color: #cfc49c; 
-    padding-top: 20px;
+    padding-top: 5px;
     text-align: left;
 }
 
@@ -252,7 +252,7 @@ body.order::before {
     color: #f5eee6;
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     
     /* Hide the text by default but keep its spacing */
     opacity: 0;
