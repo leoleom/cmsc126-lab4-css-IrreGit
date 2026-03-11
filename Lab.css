@@ -103,7 +103,24 @@ p {
 
 /* ------------- ORDER PAGE (MEMBER 2)------------- */
 
+/* SIDEBAR LAYOUT */
+body.order {
+    padding-left: 280px; 
+    position: relative;
+}
 
+/* Create the Sidebar Band */
+body.order::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: 280px;
+    background-color: #712f2e; 
+    border-right: 4px solid #bdb487; 
+    z-index: 0;
+}
 
+/* Hide HTML elements that break the layout */
+.order > br, .order > hr, .order > a[href^="#"] { display: none; }
 
 /* ------------- ABOUT PAGE (MEMBER 3)------------- */
