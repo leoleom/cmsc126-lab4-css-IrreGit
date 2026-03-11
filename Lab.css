@@ -123,4 +123,57 @@ body.order::before {
 /* Hide HTML elements that break the layout */
 .order > br, .order > hr, .order > a[href^="#"] { display: none; }
 
+/* HEADER & NAVIGATION */
+.order header, .order .navBar, .order footer {
+    position: fixed;
+    left: 0;
+    width: 280px;
+    z-index: 10;
+    text-align: center;
+    background: transparent; 
+}
+
+.order header { top: 30px; }
+
+.order header h1 {
+    font-family: "Darumadrop One", sans-serif;
+    color: #f5eee6;
+    font-weight: 400;
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.order .navBar {
+    top: 250px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Emojis as icons */
+.order .navBar a.navigation {
+    font-family: "Darumadrop One", sans-serif;
+    color: #f5eee6;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.order .navBar a.navigation:hover { color: #cfc49c; } 
+.order .navBar a.navigation:nth-child(1)::before { content: "🏠"; font-size: 2rem; margin-bottom: 5px; }
+.order .navBar a.navigation:nth-child(2)::before { content: "📋"; font-size: 2rem; margin-bottom: 5px; }
+.order .navBar a.navigation:nth-child(3)::before { content: "👥"; font-size: 2rem; margin-bottom: 5px; }
+
+.order footer {
+    bottom: 20px;
+    font-size: 0.8rem;
+    color: #e3c19d; 
+    font-family: "Zen Maru Gothic", sans-serif;
+}
+
+
+
 /* ------------- ABOUT PAGE (MEMBER 3)------------- */
