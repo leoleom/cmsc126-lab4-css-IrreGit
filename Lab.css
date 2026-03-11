@@ -31,8 +31,6 @@ Focus on applying proper CSS techniques such as:
 
 */
 
-
-
 /* ASSETS
 
 COLORS:
@@ -103,7 +101,7 @@ p {
 
 /* ------------- ORDER PAGE (MEMBER 2)------------- */
 
-/* SIDEBAR LAYOUT */
+/* SIDEBAR & BASE LAYOUT */
 body.order {
     padding-left: 280px; 
     position: relative;
@@ -174,83 +172,84 @@ body.order::before {
     font-family: "Zen Maru Gothic", sans-serif;
 }
 
-/* MAIN CONTENT AND HERO BANNER */
+/* HERO BANNER */
 .order .imgBanner {
     position: absolute;
     top: 0; left: 280px; right: 0;
     width: calc(100% - 280px);
-    height: 40vh;
+    height: 25vh; 
     object-fit: cover;
-    opacity: 0.5; 
+    opacity: 0.3; 
     z-index: -1;
 }
 
-.order .coffee:nth-of-type(1) {
-    margin-top: 20vh;
-    text-align: center;
+/* Reset global .coffee containers to prevent conflicts */
+.order .coffee {
     background: transparent;
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    width: auto;
+}
+
+/* MENU SECTION */
+.order .coffee:nth-of-type(1) {
+    margin-top: 30vh; /* Pushed down so it no longer overlaps the banner! */
+    padding: 0 40px; 
+    text-align: center; /* Centers the inner content */
+}
+
+.order #tagline, .order h2 {
+    text-align: center; /* Changed from left to center */
+    font-family: "Darumadrop One", sans-serif;
+    color: #f5eee6;
+    margin-bottom: 20px;
 }
 
 .order #tagline {
     font-family: "Zen Maru Gothic", sans-serif;
     font-size: 1.2rem;
-    color: #f5eee6;
-    margin-bottom: 10px;
 }
 
-.order h2 {
-    font-family: "Darumadrop One", sans-serif;
-    color: #f5eee6;
-    font-weight: 400;
-    letter-spacing: 2px;
-}
-
-/* MENU TABLE */
+/* The magic fix to center the table at any zoom level */
 .order #coffee_choices {
-    width: 90%;
-    margin: 0 auto;
+    width: max-content; /* Shrinks the table box to tightly hug the images */
+    max-width: 100%; /* Still allows scrolling on tiny screens */
+    margin: 0 auto; /* Centers the whole table box perfectly */
     overflow-x: auto; 
     white-space: nowrap;
     display: block; 
-    
     scrollbar-width: none; 
     -ms-overflow-style: none; 
 }
-
-.order #coffee_choices::-webkit-scrollbar {
-    display: none; 
-}
-
-.order #coffee_choices td {
-    padding-left: 12px;
-    padding-right: 12px;
-}
+.order #coffee_choices::-webkit-scrollbar { display: none; }
 
 .order .coffeeTitle {
-    background: transparent;
     font-family: "Darumadrop One", sans-serif;
     font-size: 1.8rem;
     color: #cfc49c; 
-    padding-top: 5px;
-    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center; /* Changed from left to center */
 }
 
-/* Squared images with soft edges */
+.order #coffee_choices td {
+    padding: 0 10px; 
+}
+
 .order .coffeeImg {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border: 2px solid #bdb487; 
     border-radius: 8px;
-    margin: 0 auto; /* Perfectly centers the image inside the column */
-    display: block; /* Required for margin auto to work */
+    margin: 0 auto; 
+    display: block;
     transition: transform 0.3s;
 }
-
-.order .coffeeImg:hover {
-    transform: translateY(-5px);
-    cursor: pointer;
-}
+.order .coffeeImg:hover { transform: translateY(-5px); cursor: pointer; }
 
 .order td.label {
     font-family: "Zen Maru Gothic", sans-serif;
@@ -258,20 +257,14 @@ body.order::before {
     color: #f5eee6;
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 0px;
-    
-    /* Allow text to wrap and constrain column width */
     white-space: normal; 
     width: 150px; 
-    
-    /* Hide the text by default but keep its spacing */
     opacity: 0;
     transform: translateY(-10px); 
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* If an image in a specific column is hovered, reveal the label 
-   in the exact same column in the row immediately below it. */
+/* Hover Reveal */
 .order tr:has(td:nth-child(1):hover) + tr td.label:nth-child(1),
 .order tr:has(td:nth-child(2):hover) + tr td.label:nth-child(2),
 .order tr:has(td:nth-child(3):hover) + tr td.label:nth-child(3),
@@ -279,105 +272,99 @@ body.order::before {
 .order tr:has(td:nth-child(5):hover) + tr td.label:nth-child(5),
 .order tr:has(td:nth-child(6):hover) + tr td.label:nth-child(6),
 .order tr:has(td:nth-child(7):hover) + tr td.label:nth-child(7),
-.order td.label:hover {  /* Keeps it visible if the mouse moves down onto the text */
-    opacity: 1;
-    transform: translateY(0);
-}
+.order td.label:hover { opacity: 1; transform: translateY(0); }
 
-/* TWO-COLUMN FORM */
+/* FORM SECTION */
 .order .coffee:nth-of-type(2) {
     margin: 60px auto;
-    width: 80%;
-    max-width: 800px;
+    text-align: center; /* Ensures inner elements obey centering */
+    width: 100%;
 }
 
 .order form {
+    margin: 0 auto; /* Forces the box to lock to the dead center! */
+    width: 55%; 
+    min-width: 400px; 
+    max-width: 600px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto auto auto auto auto;
-    column-gap: 50px;
-    row-gap: 5px; 
+    grid-template-columns: 2fr 1fr;
+    gap: 15px; 
+    background-color: #bb6d46; 
+    padding: 40px; 
+    border-radius: 15px;
+    border: 2px solid #bdb487;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
-
 .order form br { display: none; } 
 
 .order form label {
+    grid-column: 1 / -1; 
+    text-align: center;
     font-family: "Zen Maru Gothic", sans-serif;
     color: #f5eee6;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    margin-top: 5px; 
+    margin-bottom: 0px; 
+    font-weight: 700;
 }
 
-/* Pin Left Column Items */
-.order form label[for="fname"] { grid-column: 1; grid-row: 1; }
-.order form input#fname        { grid-column: 1; grid-row: 2; }
-.order form label[for="lname"] { grid-column: 1; grid-row: 3; }
-.order form input#lname        { grid-column: 1; grid-row: 4; }
-.order form label[for="mail"]  { grid-column: 1; grid-row: 5; }
-.order form input#mail         { grid-column: 1; grid-row: 6; }
-
-/* Pin Right Column Items */
-.order form label[for="drink"] { grid-column: 2; grid-row: 1; }
-
-/* Generate the empty Photo Box using ::after */
-.order form label[for="drink"]::after {
-    content: "";
-    display: block;
-    width: 160px;
-    height: 160px;
-    background-color: #282120; 
-    border: 2px solid #bdb487;
-    border-radius: 8px;
-    margin-top: 15px;
-}
-
-/* Pin Dropdown */
-.order form select#drink { 
-    grid-column: 2; 
-    grid-row: 6; 
-    align-self: end; 
-}
-
-/* Input Fields Styling */
 .order form input[type="text"],
-.order form input[type="email"],
-.order form select {
+.order form input[type="email"] {
+    grid-column: 1 / -1;
+    width: 90%; 
+    justify-self: center; 
+    padding: 10px; 
+    background-color: #e3c19d; 
+    border: none;
+    color: #181716;
+    font-family: "Zen Maru Gothic", sans-serif;
+    border-radius: 5px;
+    text-align: center; 
+}
+
+.order form select#drink { 
+    grid-column: 1; 
     width: 100%;
     padding: 10px;
-    background-color: transparent; 
+    background-color: #282120; 
     border: 1px solid #bdb487; 
     color: #f5eee6;
     font-family: "Zen Maru Gothic", sans-serif;
-    border-radius: 5px;
-    box-sizing: border-box; 
+    border-radius: 20px; 
+    text-align: center;
 }
 
-.order form select {
-    background-color: #282120; 
-}
-
-/* Order Button Styling */
 .order form input[type="submit"] {
-    grid-column: 1 / -1; 
-    grid-row: 7;
-    justify-self: center; 
-    margin-top: 40px;
-    background-color: transparent; 
-    border: 2px solid #bdb487;
+    grid-column: 2; 
+    width: 100%;
+    padding: 10px;
+    background-color: #282120; 
+    border: 1px solid #bdb487;
     color: #f5eee6;
-    padding: 12px 60px;
     font-family: "Zen Maru Gothic", sans-serif;
     font-weight: 700;
-    font-size: 1.2rem;
-    border-radius: 5px;
+    font-size: 1rem;
+    border-radius: 20px; 
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s;
 }
+.order form input[type="submit"]:hover { background-color: #712f2e; }
 
-.order form input[type="submit"]:hover {
-    background-color: #bdb487;
-    color: #181716;
+/* FOOTER LINK */
+.order > div > a[href="#title"] {
+    display: block;
+    width: 150px;
+    margin: 30px auto 50px auto;
+    padding: 10px;
+    background-color: #bb6d46;
+    color: #f5eee6;
+    text-align: center;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid #bdb487;
+    transition: background-color 0.3s;
 }
-
+.order > div > a[href="#title"]:hover { background-color: #712f2e; }
 
 /* ------------- ABOUT PAGE (MEMBER 3)------------- */
