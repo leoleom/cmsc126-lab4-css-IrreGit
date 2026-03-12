@@ -177,13 +177,28 @@ p {
    }
 
 /* ------------- HOME PAGE (MEMBER 1)------------- */
+
+.home {
+   padding-top: 700px;
+   position: relative;
+}
+
+.home #banner {
+   height: 700px;
+}
+
 .home > #welcome {
-  font-size: 0;
-  line-height: 1.2;
+   position: absolute;
+   
+   top: 600px;
+   margin: 0px;
+   width: 100%;
+
+   font-size: 0;
+   line-height: 1.2;
+   backdrop-filter: blur(5px);
 
   text-align: left;
-
-  margin: 10px;
 }
 .home > #welcome::before {
   content: "Welcome to the official website of Vinze and Baboy's Coffee Shop.";
@@ -200,6 +215,10 @@ p {
   font-style: italic;
   white-space: pre;
   display: block;
+}
+
+.home > .coffee:first-of-type{
+   margin-top: 750px;
 }
 
 .home > .coffee h2 {
@@ -257,7 +276,7 @@ p {
    text-align: center;
 
    padding: 20;
-   margin: 0;
+   margin: 0px 0px 50px 0px;
    list-style: none;
    width: 90%;
    box-sizing: border-box;
@@ -298,12 +317,14 @@ p {
    text-align: center;
    display: block;
    width: 100%;
-   margin: 0;
+
+   animation: revealItem linear both;
+   animation-timeline: view();
+   animation-range: entry 20% entry 80%;
 }
 
 .home > .coffee img{
-   padding-left: 0;
-   padding-right: 0;
+   padding: 50px 50px 0px 0px;
 }
 
 @keyframes revealItem {
@@ -319,6 +340,21 @@ p {
   }
 }
 
+.home > .coffee > .definition {
+   padding: 0px 50px 0px 0px;
+}
+
+.home #orderCoffee {
+   padding: 20px;
+   margin: 0px 50px 0px 0px;
+   font-weight: bold;
+}
+
+.home .coffee #bottomPage{
+   padding-top: 0;
+   padding-bottom: 50px;
+
+}
 
 /* ------------- ORDER PAGE (MEMBER 2)------------- */
 
