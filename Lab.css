@@ -190,13 +190,12 @@ p {
     color: #f5eee6;
    }
 
-/* ------------- HOME PAGE (MEMBER 1)------------- */
 
+/* ------------- HOME PAGE (MEMBER 1)------------- */
 .home {
    padding-top: 700px;
    position: relative;
 }
-/* ------------- HOME PAGE (MEMBER 1)------------- */
 
 .home #banner {
    height: 700px;
@@ -270,7 +269,6 @@ p {
    
    background-color: #a38a59; 
 }
-/* ------------- ORDER PAGE (MEMBER 2)------------- */
 
 
 .home > .coffee h2::after {
@@ -371,8 +369,21 @@ p {
    padding-top: 0;
    padding-bottom: 50px;
 
+
+}
+
+/* ------------- ORDER PAGE (MEMBER 2)------------- */
+
+
+
+
+
+
+
 /* ------------- ABOUT PAGE (MEMBER 3)------------- */
-.about {display: block;}
+.about {
+   display: block;
+}
 
 .about::before {
   content: " ";
@@ -712,8 +723,4 @@ html {scroll-behavior: smooth;}
   background-color: #a66d42;  
   transform: scale(1.05);
 }
-
-
-
-
 
