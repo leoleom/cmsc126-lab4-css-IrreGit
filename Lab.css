@@ -378,7 +378,8 @@ a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #titl
   justify-self: start;
 
   position: relative;
-  border: 2px solid #000000;
+  color:#181716;
+  border: 2px solid #181716;
   border-radius: 10px;
   padding: 20px 20px 20px 60px;
 
