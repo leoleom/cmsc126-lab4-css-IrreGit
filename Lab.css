@@ -196,7 +196,6 @@ p {
    padding-top: 700px;
    position: relative;
 }
-/* ------------- HOME PAGE (MEMBER 1)------------- */
 
 .home #banner {
    height: 700px;
@@ -371,8 +370,13 @@ p {
    padding-top: 0;
    padding-bottom: 50px;
 
+
+}
+
 /* ------------- ABOUT PAGE (MEMBER 3)------------- */
-.about {display: block;}
+.about {
+   display: block;
+}
 
 .about::before {
   content: " ";
