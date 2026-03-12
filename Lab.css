@@ -72,251 +72,327 @@ COLORS:
  
 
  */
-/* define variables here for general usage... */
-:root{
-   --sidepanel-width: 22%;
-   --sidepanel-minwidth: 300px;
-   --banner-maxheight: 200px;
-   --banner-height: 14%; 
-   --body-padding: 20px;
+
+/* ------------- IMPORTS ------------- */
+@import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Zen+Maru+Gothic&display=swap');
+/* ------------- PRESETS (Note: DO NOT TOUCH THIS AREA)------------- */
+
+:root {
+  --sidepanel-width: 300px;
 }
 
- /* ------------- IMPORTS ------------- */
-@import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+h1, h2, h3, #title, .coffeeTitle, .navigation, .navBar a {
+    font-family: 'Darumadrop One', sans-serif !important;
+}
 
+p, span, label, td, .label, footer {
+    font-family: 'Zen Maru Gothic', sans-serif !important;
+}
 
- /* ------------- PRESETS (Note: DO NOT TOUCH THIS AREA)------------- */
 body {
-   background-color: #a38a59;
-   margin: 0;
+  background-color: #a38a59;
+  margin: 0;
 
-   text-align: center;
+  text-align: center;
 
-   padding: 0;
-   padding-left: calc(max(var(--sidepanel-width), var(--sidepanel-minwidth)) + var(--body-padding));
-   padding-right: var(--body-padding);
-   padding-top: 200px;
+  padding: 0;
+  padding-left: var(--sidepanel-width);
 
-   max-width: calc(100% - var(--sidepanel-width));
-   overflow-x: hidden;
-   font-family: "Darumadrop One", sans-serif;
+  overflow-x: hidden;
+  font-family: "Darumadrop One", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidepanel-width);
+  background-color: #282120;
+  /* Neutral dark base */
+  border-right: 3px solid #c5b388;
+  z-index: 1;
 }
 
 /* The Side Panel: used by all pages */
-header, .navBar, body > hr:nth-of-type(2), footer{
-   z-index: 10;
-   position: fixed;
-   left: 0;
+header, .navBar, footer {
+  z-index: 10;
+  position: fixed;
+  left: 0;
+  padding-top: 0px;
 
-   width: var(--sidepanel-width);
-   min-width: var(--sidepanel-minwidth);
-   height: auto;
-   
-   margin: 5px 0;
+  width: var(--sidepanel-width);
 
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   text-align: center;
+  margin: 0;
 
-   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  color:#f5eee6;
 }
 
-header{ 
-   top: 32%; line-height: 1;
+header {
+  top: 7%;
+  line-height: 1;
+  font-size: 20px;
 }
 
-header hr{ 
-   display: none;
+header::before {
+    content: "";
+    display: block;
+    width: 150px;
+    height: 150px;
+    
+    background-image: url('Images/Logo.jpg'); 
+    background-size: cover;
+    background-position: center;
+    
+    border-radius: 50%;
+    border: 5px solid #cfc49c;
+    margin: 0 auto; 
+    
+    position: relative;
+    z-index: 100;
+    top: -12px;
 }
 
-.navBar { 
-   top: 46%; gap: 12px;
+header h1, header #title {
+  position: relative;
+  top: -15px; 
+  left: 0px;    
+  margin-top: 10px; 
+}
+
+.navBar {
+  top: 50%;
+  gap: 12px;
 }
 
 .navBar a {
-   color: inherit;
-   text-decoration: none;
-   text-transform: uppercase;
-   font-weight: bold;
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
 
-   border-top: 1px solid;
-   border-bottom: 1px solid;
+  border-bottom: 1px solid #cfc49c;
+  border-top: 1px solid ;
 
-   width: 50%;
-   height: 36px;
-   display: flex;
+  width: 60%;
+  height: 40px;
+  display: flex;
 
-   justify-content: center;
-   align-items: center;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
 }
 
 .navBar a:hover {
-  background-color: #8c734b;
-  transition: background-color 0.1s ease; 
+  background-color: #a66d42;;
+  transition: background-color 0.1s ease;
+  transform: scale(1.10);
 }
 
-footer { 
-   top: 68%; line-height: 2; font-size: 12px;
+footer {
+  bottom: 5%;
+  line-height: 2;
+  font-size: 12px;
 }
 
-#banner[title="Coffee Banner"]{
-   position: absolute;
+#banner[title="Coffee Banner"], .order .imgBanner, .about .imgBanner {
+  position: absolute;
 
-   top: 0;
-   left: max(var(--sidepanel-width), var(--sidepanel-minwidth));
-   margin-top: 0;
-   display: block;
+  top: 0;
+  left: var(--sidepanel-width);
+  margin-top: 0;
+  display: block;
 
-   object-fit: cover;
-   object-position: center 75%;
+  object-fit: cover;
+  object-position: center 75%;
 
-   height: 200px;
-   width: calc(100% - max(var(--sidepanel-width), var(--sidepanel-minwidth)));
+  height: 200px;
+  width: calc(100% - var(--sidepanel-width));
+  border-radius: 10px;
 
-   box-sizing: border-box;
-   z-index: -1;
+  box-sizing: border-box;
+  z-index: -1;
+}
+
+p {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 600;
+  color: #f5eee6;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes revealItem {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.home .navBar a:nth-child(1) {
+    background-color: #a66d42;; 
+    color: #f5eee6 !important;
+}
+
+.order .navBar a:nth-child(2) {
+    background-color: #a66d42;;
+    color: #f5eee6 !important;
+}
+
+.about .navBar a:nth-child(3) {
+    background-color: #a66d42;;
+    color: #f5eee6 !important;
 }
 
 /* hiding these irrelevant pieces parts*/
-a[href="#bottomPage"], a[href="#title"], body > br:nth-of-type(-n+2), footer #title{display: none}
-
-p {
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-weight: 600;
-    color: #f5eee6;
-   }
+a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #title {
+  display: none
+}
 
 /* ------------- HOME PAGE (MEMBER 1)------------- */
 
 .home {
-   padding-top: 700px;
-   position: relative;
+  padding-top: 670px;
+  position: relative;
 }
 
 .home #banner {
-   height: 700px;
+  height: 700px;
 }
 
-.home > #welcome {
-   position: absolute;
-   
-   top: 600px;
-   margin: 0px;
-   width: 100%;
-
-   font-size: 0;
-   line-height: 1.2;
-   backdrop-filter: blur(5px);
+.home>#welcome {
+  position: absolute;
+  top: 600px;
+  margin: 0px;
+  width: 100%;
+  font-size: 0;
+  line-height: 1.2;
+  backdrop-filter: blur(4px);
 
   text-align: left;
 }
-.home > #welcome::before {
+
+.home>#welcome::before {
   content: "Welcome to the official website of Vinze and Baboy's Coffee Shop.";
-  
+  margin-left: 40px;
+  margin-top: 10px;
   font-size: 24px;
   font-weight: bold;
   display: block;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-.home > #welcome::after {
+
+.home>#welcome::after {
   content: "We are open from 10:00 AM - 9:00 PM.\a Try our VABulous drinks and pastries.";
-  
+  margin-left: 40px;
+  margin-bottom: 10px;
   font-size: 16px;
   font-weight: normal;
   font-style: italic;
   white-space: pre;
   display: block;
+
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.home > .coffee:first-of-type{
-   margin-top: 750px;
+.home>.coffee:first-of-type {
+  margin-top: 750px;
 }
 
-.home > .coffee h2 {
-   position: sticky;
-   top: 0;
-   z-index: 5;
-   
-   /* underline */
-   display: table;
-   min-width: 200px;
-   width: auto;
-   margin-left: 0;
-   margin-right: auto;
-   margin-top: 0;
-   margin-bottom: 10px;
+.home>.coffee h2 {
+  position: sticky;
+  top: 0;
+  z-index: 5;
 
-   padding: 20px 20px 10px 2%;
-   text-align: left;
-   
-   /* cover back elements */
-   background-color: #a38a59;
+  /* underline */
+  display: table;
+  min-width: 200px;
+  width: auto;
+  margin-left: 0;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  padding: 20px 20px 10px 2%;
+  text-align: left;
+
 }
 
-.home > .coffee h2::before {
-   z-index: -1; 
+.home>.coffee h2::before {
+  z-index: -1;
 
-   content: "";
-   position: absolute;
-   top: 0;
-   
-   left: -100vw; 
-   right: -100vw;
-   bottom: 0;
-   
-   background-color: #a38a59; 
-}
-/* ------------- ORDER PAGE (MEMBER 2)------------- */
+  content: "";
+  position: absolute;
+  top: 0;
 
+  left: -100vw;
+  right: -100vw;
+  bottom: 0;
 
-.home > .coffee h2::after {
-   content: "";
-   display: block;
-   width: 115%; 
-   height: 4px;
-   background-color: #bdb487; 
-   margin-top: 5px; 
-   margin-left: -2%; 
-   border-radius: 2px;
 }
 
-.home > .coffee ol{
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(405px, 1fr));
-   gap: 20px;
-   
-   align-items: start;
-   text-align: center;
-
-   padding: 20;
-   margin: 0px 0px 50px 0px;
-   list-style: none;
-   width: 90%;
-   box-sizing: border-box;
+.home>.coffee h2::after {
+  content: "";
+  display: block;
+  width: 115%;
+  height: 4px;
+  background-color: #bdb487;
+  margin-top: 5px;
+  margin-left: -2%;
+  border-radius: 2px;
 }
 
-.home > .coffee ol li{
-   display: block;
-   height: fit-content;
+.home>.coffee ol {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(405px, 1fr));
+  gap: 20px;
 
-   justify-self: start;
+  align-items: start;
+  text-align: center;
 
-   position: relative;
-   border: 2px solid #000000;
-   border-radius: 10px;
-   padding: 20px 20px 20px 60px;
-   
-   text-align: left;
-   box-sizing: border-box;   
-   counter-increment: number;
-
-   animation: revealItem linear both;
-   animation-timeline: view();
-   animation-range: entry 20% entry 80%;
+  padding: 20;
+  margin: 0px 0px 50px 0px;
+  list-style: none;
+  width: 90%;
+  box-sizing: border-box;
 }
-.home > .coffee ol li::before {
-  content: counter(number); 
+
+.home>.coffee ol li {
+  display: block;
+  height: fit-content;
+
+  justify-self: start;
+
+  position: relative;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  padding: 20px 20px 20px 60px;
+
+  text-align: left;
+  box-sizing: border-box;
+  counter-increment: number;
+
+  /* animation: revealItem linear both;
+  animation-timeline: view();
+  animation-range: entry 20% entry 80%; */
+}
+
+.home>.coffee ol li::before {
+  content: counter(number);
   position: absolute;
   top: 25px;
   left: 25px;
@@ -326,490 +402,338 @@ p {
   line-height: 1;
 }
 
-.home > .coffee {
-   align-items: center;
-   text-align: center;
-   display: block;
-   width: 100%;
+.home>.coffee {
+  align-items: center;
+  text-align: center;
+  display: block;
+  width: 100%;
 
-   animation: revealItem linear both;
-   animation-timeline: view();
-   animation-range: entry 20% entry 80%;
+  /* animation: revealItem linear both;
+  animation-timeline: view();
+  animation-range: entry 20% entry 80%; */
 }
 
-.home > .coffee img{
-   padding: 50px 50px 0px 0px;
+.home>.coffee img {
+  object-fit: cover;
+  border: 2px solid #bdb487;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: block;
+  transition: transform 0.3s;
 }
 
-/* SIDEBAR & BASE LAYOUT */
-body.order {
-    padding-left: 280px; 
-    position: relative;
+
+.home>.coffee>.definition {
+  margin: 40px auto;
 }
 
-/* Create the Sidebar Band */
-body.order::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; bottom: 0;
-    width: 280px;
-    background-color: #712f2e; 
-    border-right: 4px solid #bdb487; 
-    z-index: 0;
+.home a:has(#orderCoffee) {
+  text-decoration: none !important;
+}
+
+.home #orderCoffee {
+  display: block;
+  width: fit-content;
+  margin: 10px auto;
+  padding: 12px 24px;
+  background-color: #bb6d46;
+  color: #fff;
+  font-weight: 600;
+
+  border: none;
+  border-radius: 8px;
+
+  z-index: 999;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.home #orderCoffee:hover{
+  background-color: #712f2e;
+  transform: scale(1.05);
+  text-decoration: none !important;
+}
+
+
+.home .coffee #bottomPage {
+  padding-top: 0;
+  padding-bottom: 50px;
+
+}
+
+
+/* ------------- ORDER PAGE (MEMBER 2)------------- */
+
+.order {
+    display: block;
+    margin-top: 210px;
+
 }
 
 /* Hide HTML elements that break the layout */
-.order > br, .order > hr, .order > a[href^="#"] { display: none; }
+.order>br,
+.order>hr,
+.order>a[href^="#"] {
+  display: none;
+}
 
 /* HEADER & NAVIGATION */
-.order header, .order .navBar, .order footer {
-    position: fixed;
-    left: 0;
-    width: 280px;
-    z-index: 10;
-    text-align: center;
-    background: transparent; 
+.order header,
+.order .navBar,
+.order footer {
+  background: transparent;
 }
 
-.order header { top: 30px; }
-
-.order header h1 {
-    font-family: "Darumadrop One", sans-serif;
-    color: #f5eee6;
-    font-weight: 400;
-    font-size: 2.2rem;
-    margin: 0;
-}
-
-.order .navBar {
-    top: 250px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-/* Emojis as icons */
-.order .navBar a.navigation {
-    font-family: "Darumadrop One", sans-serif;
-    color: #f5eee6;
-    text-decoration: none;
-    font-size: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: color 0.3s;
-}
-
-.order .navBar a.navigation:hover { color: #cfc49c; } 
+/* .order .navBar a.navigation:hover { color: #cfc49c; } 
 .order .navBar a.navigation:nth-child(1)::before { content: "🏠"; font-size: 2rem; margin-bottom: 5px; }
 .order .navBar a.navigation:nth-child(2)::before { content: "📋"; font-size: 2rem; margin-bottom: 5px; }
-.order .navBar a.navigation:nth-child(3)::before { content: "👥"; font-size: 2rem; margin-bottom: 5px; }
-
-.order footer {
-    bottom: 20px;
-    font-size: 0.8rem;
-    color: #e3c19d; 
-    font-family: "Zen Maru Gothic", sans-serif;
-}
-
-/* HERO BANNER */
-.order .imgBanner {
-    position: absolute;
-    top: 0; left: 280px; right: 0;
-    width: calc(100% - 280px);
-    height: 25vh; 
-    object-fit: cover;
-    opacity: 0.3; 
-    z-index: -1;
-}
-
-/* Reset global .coffee containers to prevent conflicts */
-.order .coffee {
-    background: transparent;
-    box-shadow: none;
-    border: none;
-    margin: 0;
-    padding: 0;
-    max-width: none;
-    width: auto;
-}
+.order .navBar a.navigation:nth-child(3)::before { content: "👥"; font-size: 2rem; margin-bottom: 5px; } */
 
 /* MENU SECTION */
 .order .coffee:nth-of-type(1) {
-    margin-top: 30vh; /* Pushed down so it no longer overlaps the banner! */
-    padding: 0 40px; 
-    text-align: center; /* Centers the inner content */
-}
-
-.order #tagline, .order h2 {
-    text-align: center; /* Changed from left to center */
-    font-family: "Darumadrop One", sans-serif;
-    color: #f5eee6;
-    margin-bottom: 20px;
+  margin-top: 30vh;
+  /* Pushed down so it no longer overlaps the banner! */
+  padding: 0 40px;
+  text-align: center;
+  /* Centers the inner content */
 }
 
 .order #tagline {
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-size: 1.2rem;
+    font-family: 'Darumadrop One', sans-serif !important;
+    font-size: 24px;       /* Headers are usually larger, so we bump this up */
+    font-weight: 400;
+    line-height: 1.2;
+    margin-left: 20px;
+    max-width: 95%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: rgba(197, 179, 136, 0.85);
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    color: #712f2e;        /* Matching your header text color */
+}
+
+.order h2 {
+  text-align: center;
+  /* Changed from left to center */
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  font-family: 'Darumadrop One', sans-serif !important;
+  font-size: 70px;       /* Headers are usually larger, so we bump this up */
+  font-weight: 400;
+  line-height: 1.2;
+  color: #f5eee6;
 }
 
 /* The magic fix to center the table at any zoom level */
 .order #coffee_choices {
-    width: max-content; /* Shrinks the table box to tightly hug the images */
-    max-width: 100%; /* Still allows scrolling on tiny screens */
-    margin: 0 auto; /* Centers the whole table box perfectly */
-    overflow-x: auto; 
-    white-space: nowrap;
-    display: block; 
-    scrollbar-width: none; 
-    -ms-overflow-style: none; 
+  width: max-content;
+  /* Shrinks the table box to tightly hug the images */
+  max-width: 100%;
+  /* Still allows scrolling on tiny screens */
+  margin: 0 auto;
+  /* Centers the whole table box perfectly */
+  overflow-x: auto;
+  white-space: nowrap;
+  display: block;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-.order #coffee_choices::-webkit-scrollbar { display: none; }
+
+.order #coffee_choices::-webkit-scrollbar {
+  display: none;
+}
 
 .order .coffeeTitle {
-    font-family: "Darumadrop One", sans-serif;
-    font-size: 1.8rem;
-    color: #cfc49c; 
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center; /* Changed from left to center */
+  font-size: 1.8rem;
+  color: #f5eee6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  /* Changed from left to center */
 }
 
 .order #coffee_choices td {
-    padding: 0 10px; 
+  padding: 0 10px;
 }
 
 .order .coffeeImg {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border: 2px solid #bdb487; 
-    border-radius: 8px;
-    margin: 0 auto; 
-    display: block;
-    transition: transform 0.3s;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 2px solid #bdb487;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: block;
+  transition: transform 0.3s;
 }
-.order .coffeeImg:hover { transform: translateY(-5px); cursor: pointer; }
+
+.order .coffeeImg:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
 
 .order td.label {
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-size: 1rem;
-    color: #f5eee6;
-    text-align: center;
-    padding-top: 10px;
-    white-space: normal; 
-    width: 150px; 
-    opacity: 0;
-    transform: translateY(-10px); 
-    transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
+  color: #f5eee6;
+  text-align: center;
+  padding-top: 10px;
+  white-space: normal;
+  width: 150px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* Hover Reveal */
-.order tr:has(td:nth-child(1):hover) + tr td.label:nth-child(1),
-.order tr:has(td:nth-child(2):hover) + tr td.label:nth-child(2),
-.order tr:has(td:nth-child(3):hover) + tr td.label:nth-child(3),
-.order tr:has(td:nth-child(4):hover) + tr td.label:nth-child(4),
-.order tr:has(td:nth-child(5):hover) + tr td.label:nth-child(5),
-.order tr:has(td:nth-child(6):hover) + tr td.label:nth-child(6),
-.order tr:has(td:nth-child(7):hover) + tr td.label:nth-child(7),
-.order td.label:hover { opacity: 1; transform: translateY(0); }
+.order tr:has(td:nth-child(1):hover)+tr td.label:nth-child(1),
+.order tr:has(td:nth-child(2):hover)+tr td.label:nth-child(2),
+.order tr:has(td:nth-child(3):hover)+tr td.label:nth-child(3),
+.order tr:has(td:nth-child(4):hover)+tr td.label:nth-child(4),
+.order tr:has(td:nth-child(5):hover)+tr td.label:nth-child(5),
+.order tr:has(td:nth-child(6):hover)+tr td.label:nth-child(6),
+.order tr:has(td:nth-child(7):hover)+tr td.label:nth-child(7),
+.order td.label:hover {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* FORM SECTION */
 .order .coffee:nth-of-type(2) {
-    margin: 60px auto;
-    text-align: center; /* Ensures inner elements obey centering */
-    width: 100%;
+  margin: 60px auto;
+  text-align: center;
+  /* Ensures inner elements obey centering */
+  width: 100%;
 }
 
 .order form {
-    margin: 0 auto; /* Forces the box to lock to the dead center! */
-    width: 55%; 
-    min-width: 400px; 
-    max-width: 600px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 15px; 
-    background-color: #bb6d46; 
-    padding: 40px; 
-    border-radius: 15px;
-    border: 2px solid #bdb487;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  margin: 0 auto;
+  /* Forces the box to lock to the dead center! */
+  width: 55%;
+  min-width: 400px;
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 15px;
+  background-color: #bb6d46;
+  padding: 40px;
+  border-radius: 15px;
+  border: 2px solid #bdb487;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-.order form br { display: none; } 
+
+.order form br {
+  display: none;
+}
 
 .order form label {
-    grid-column: 1 / -1; 
-    text-align: center;
-    font-family: "Zen Maru Gothic", sans-serif;
-    color: #f5eee6;
-    margin-top: 5px; 
-    margin-bottom: 0px; 
-    font-weight: 700;
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #f5eee6;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-weight: 700;
 }
 
 .order form input[type="text"],
 .order form input[type="email"] {
-    grid-column: 1 / -1;
-    width: 90%; 
-    justify-self: center; 
-    padding: 10px; 
-    background-color: #e3c19d; 
-    border: none;
-    color: #181716;
-    font-family: "Zen Maru Gothic", sans-serif;
-    border-radius: 5px;
-    text-align: center; 
+  grid-column: 1 / -1;
+  width: 90%;
+  justify-self: center;
+  padding: 10px;
+  background-color: #e3c19d;
+  border: none;
+  color: #181716;
+  border-radius: 5px;
+  text-align: center;
 }
 
-.order form select#drink { 
-    grid-column: 1; 
-    width: 100%;
-    padding: 10px;
-    background-color: #282120; 
-    border: 1px solid #bdb487; 
-    color: #f5eee6;
-    font-family: "Zen Maru Gothic", sans-serif;
-    border-radius: 20px; 
-    text-align: center;
+.order form select#drink {
+  grid-column: 1;
+  width: 100%;
+  padding: 10px;
+  background-color: #282120;
+  border: 1px solid #bdb487;
+  color: #f5eee6;
+  border-radius: 20px;
+  text-align: center;
 }
 
 .order form input[type="submit"] {
-    grid-column: 2; 
-    width: 100%;
-    padding: 10px;
-    background-color: #282120; 
-    border: 1px solid #bdb487;
-    color: #f5eee6;
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: 20px; 
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.order form input[type="submit"]:hover { background-color: #712f2e; }
-
-/* FOOTER LINK */
-.order > div > a[href="#title"] {
-    display: block;
-    width: 150px;
-    margin: 30px auto 50px auto;
-    padding: 10px;
-    background-color: #bb6d46;
-    color: #f5eee6;
-    text-align: center;
-    font-family: "Zen Maru Gothic", sans-serif;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 20px;
-    border: 2px solid #bdb487;
-    transition: background-color 0.3s;
-}
-.order > div > a[href="#title"]:hover { background-color: #712f2e; }
-
-/* ------------- ABOUT PAGE (MEMBER 3)------------- */
-@keyframes revealItem {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-    filter: blur(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
+  grid-column: 2;
+  width: 100%;
+  padding: 15px;
+  background-color: #282120;
+  border: 1px solid #bdb487;
+  color: #f5eee6;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.home > .coffee > .definition {
-   padding: 0px 50px 0px 0px;
+.order form input[type="submit"]:hover {
+  background-color: #712f2e;
+  transform: scale(1.05);
 }
 
-.home #orderCoffee {
-   padding: 20px;
-   margin: 0px 50px 0px 0px;
-   font-weight: bold;
+.order a[href="#title"] {
+  display: block;
+  width: fit-content;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 40px;
+  padding: 10px 15px;
+  background-color: #bb6d46;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  z-index: 999;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.home .coffee #bottomPage{
-   padding-top: 0;
-   padding-bottom: 50px;
-
-
+.order a[href="#title"]:hover{
+  background-color: #712f2e;
+  transform: scale(1.05);
 }
+
 
 /* ------------- ABOUT PAGE (MEMBER 3)------------- */
 .about {
-   display: block;
-}
-
-.about::before {
-  content: " ";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 280px;           
-  height: 100%;                
-  padding: 20px;
-  background-color: #181716; 
-  z-index: 1;                 
+  display: block;
+  margin-top: 210px;
 }
 
 /*------------------------( LOGO )------------------------*/
 
 .about img[alt="VAB Coffee Shop Logo"] {
-  position: fixed;
-  top: 20px;                
-  left: 50%;
-  transform: translateX(-785%);
+  /* position: fixed;
+  top: 20px;
+  left: 140px;
+  /* half the panel size*/
+  /* transform: translateX(-50%);
   width: 120px;
   height: 120px;
-  border-radius: 50%;        
-  object-fit: cover;         
+  border-radius: 50%;
+  object-fit: cover;
   border: 2px solid #f5eee6;
-  z-index: 2;
-}
-
-/*------------------------( HEADER )------------------------*/
-
-.about header {
-  position: fixed;
-  top: 0px;
-  left: 0;
-  width: 280px;
-  padding: 20px;
-  z-index: 2;
-  font-family: "Darumadrop One", sans-serif;
-  font-size: 48px;
-  font-weight: 400;
-  text-align: center;
-  color: #f5eee6;
-}
-
-.about header::before {
-  content: "";
-  display: block;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 10px auto;        
-}
-
-/*------------------------( TITLE )------------------------*/
-
-.about #title {
-  font-family: "Darumadrop One", sans-serif;
-  font-size: 30px;
-  font-weight: 400;
-  font-style: normal;
-  text-align: center;
-  color: #f5eee6;
-  margin-top: 20px;
-}
-
-/*------------------------( NAVIGATION )------------------------*/
-
-.about .navBar {
-  position: fixed;
-  top: 290px;             
-  left: 35px;
-  width: 250px;
-  margin-top: 10px;
-  z-index: 2;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  text-align: center;
-  align-items: flex-start;
-  font-family: "Zen Maru Gothic", sans-serif;
-  font-weight: 600;
-}
-
-.about .navigation {
-  display: block;
-  margin: 10px 0;
-  color: #f5eee6;
-  text-decoration: none;
-}
-
-.about .navBar .navigation::before {
-  display: block;          
-  font-size: 20px;         
-  margin-bottom: 5px;     
-  color: #ffffff;
-}
-
-/* Links styling */
-.about .navBar .navigation {
-  display: flex;             
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;                 
-
-  font-size: 14px;
-  color: #f5eee6;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-.about .navBar .navigation:hover {
-  color: #e3c19d;
-  background-color: rgba(255, 255, 255, 0.05);
-  transform: scale(1.1); 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); 
-  cursor: pointer;
-
-}
-
-.about .navBar .navigation:nth-child(1)::before {content: "\1F3E0"; /* Home icon */}
-.about .navBar .navigation:nth-child(2)::before {content: "\1F4DD"; /* Order icon */}
-.about .navBar .navigation:nth-child(3)::before {content: "\1F464"; /* About icon */}
-
-
-/*------------------------( FOOTER )------------------------*/
-
-.about footer {
-  position: fixed;         
-  bottom: 0;               
-  width: 280px;            
-  left: 0;
-  background-color: #181716; 
-  text-align: center;
-  padding: 10px 20px;
-  z-index: 2;              
-  color: #f5eee6;
-}
-
-.about footer #title {
-  font-size: 14px;        
-  color: #f5eee6;         
-  font-weight: normal;     
-  margin: 5px 0;           
-  line-height: 1.3;
-}
-
-.about footer .contacts {
-  font-size: 12px;
-  margin: 5px 0;
-  line-height: 1.4;
-}
-
-.about footer p {
-  font-size: 12px;
-  margin: 5px 0;
-  line-height: 1.4;
-  text-align: center;
+  z-index: 101; */ 
+  display: none !important;
 }
 
 /*---------------------( CONTENT CONTAINERS )---------------------*/
 
 .about .coffee {
-  margin-left: 350px;
-  max-width: 72.5%;
+  margin-left: 20px;
+  max-width: 95%;
   padding: 10px;
   margin-top: 15px;
-  background-color: rgba(197, 179, 136, 0.85);;
+  background-color: rgba(197, 179, 136, 0.85);
   border-radius: 10px;
   position: relative;
   z-index: 2;
@@ -817,42 +741,41 @@ body.order::before {
 
 /*----------------------( BANNER IMAGE )----------------------*/
 
-.about .imgBanner {
-  width: calc(100% - 376px); /* subtract sidebar width */
-  height: 450px;
-  margin-left: 340px; /* pushes banner away from sidebar */
-  border-radius: 10px;
+.about img[alt="Coffee Banner"] {
   position: relative;
-  object-fit: cover;
-  z-index: 0;
 }
 
-.about img[alt="Coffee Banner"]{position: relative;}
-.about img.imgBanner + a + hr {display: none;}
+.about img.imgBanner+a+hr {
+  display: none;
+}
+
 /*--------------------------( VIDEOS )--------------------------*/
 
 .about .coffeeVideo {
   width: 300px;
   height: 170px;
   border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
 .about .coffeeVideo:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .about .coffee ul {
-  display: flex;           
-  gap: 15px;               
-  flex-wrap: wrap;         
-  justify-content: center; 
-  list-style: none;        
-  padding: 0;              
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
 }
 
-.about .coffee ul li {flex: 0 0 auto;}
+.about .coffee ul li {
+  flex: 0 0 auto;
+}
 
 /*-----------------------( TEAM SECTION )-----------------------*/
 
@@ -875,19 +798,18 @@ body.order::before {
   object-fit: cover;
   display: flex;
   margin: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about .teamMember:hover {
-  transform: scale(1.1); 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); 
-  cursor: pointer; 
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .about .label {
   color: #f5eee6;
   font-size: 14px;
-  font-family: "Zen Maru Gothic", sans-serif;
   font-weight: 600;
   margin-top: 6px;
 }
@@ -897,17 +819,24 @@ body.order::before {
 .about p {
   line-height: 1.7;
   text-align: justify;
-  margin: auto;
+  margin: 14px auto;
   max-width: 90%;
-  margin: 20px auto;
   padding: 0 10px;
+}
+
+.about .coffee:has(#banner) p.definition {
+    font-family: 'Darumadrop One', sans-serif !important;
+    font-size: 24px;       /* Headers are usually larger, so we bump this up */
+    font-weight: 400;
+    line-height: 1.2;
+    color: #712f2e;        /* Matching your header text color */
 }
 
 /* CoffeeDrop section */
 .about .coffee img[alt="Aesthetic Coffee"] {
-  width: 290px;            
+  width: 290px;
   height: 480px;
-  margin-bottom: 10px;      
+  margin-bottom: 10px;
   border-radius: 10px;
   margin-left: 50px;
   margin-top: auto;
@@ -917,13 +846,13 @@ body.order::before {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 30px;          
-  flex-wrap: wrap;     
-  position: relative;  
+  gap: 30px;
+  flex-wrap: wrap;
+  position: relative;
 }
 
-.about .coffee:has(img[alt="Aesthetic Coffee"]) p.definition {
-  flex:1;             
+.about .coffee:has(img[alt="Aesthetic Coffee"]) p.definition{
+  flex: 1;
   order: 1;
   text-align: justify;
   line-height: 1.7;
@@ -932,57 +861,69 @@ body.order::before {
 }
 
 /* HEADINGS */
-.about h1, .about h2 {
-  font-family: "Darumadrop One", sans-serif;
+.about h1,
+.about h2 {
   color: #f5eee6;
   text-align: center;
 }
 
 /*---------------------( TEXT HIGHLIGHTS )---------------------*/
-.about .emphasis {color: #8a171f;font-weight: bold;}
-.about .term {color: #282120;font-style: italic;}
-.about .contacts {margin: 10px 0;}
-
-/**---------------------( BACK TO TOP )---------------------*/
-html {scroll-behavior: smooth;}
-
-.about a[href="#bottomPage"] {
-  display: inline-block;
-  margin-left: 340px;
-  padding: 10px 15px;
-  background-color: #a38a59;  
-  color: #f5eee6;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transform: translateY(-80%);
-  transition: background-color 0.3s ease , transform 0.2s ease;
-  z-index: 4;
+.about .emphasis {
+  color: #8a171f;
+  font-weight: bold;
 }
 
-.about a[href="#bottomPage"]:hover {background-color: #a66d42; transform: scale(1.05);}
+.about .term {
+  color: #282120;
+  font-style: italic;
+}
+
+/**---------------------( BACK TO TOP )---------------------*/
+html {
+  scroll-behavior: smooth;
+}
 
 .about a[href="#title"] {
-  display: inline-block;       
-  margin: 20px auto;
-  margin-left: 50px;
+  display: block;
+  width: fit-content;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  margin-left: 10px;
   padding: 10px 15px;
-  background-color: #a38a59;  
-  color: #fff;               
+  background-color: #bb6d46;
+  color: #fff;
   font-weight: 600;
-  text-decoration: none;       
+  text-decoration: none;
   border-radius: 8px;
   z-index: 999;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .about a[href="#title"]:hover {
-  background-color: #a66d42;  
+  background-color: #712f2e;
   transform: scale(1.05);
 }
 
 
+.about a[href="#bottomPage"] {
+  display: inline-block;
+  margin-left: 0px;
+  padding: 10px 15px;
+  background-color: #bb6d46;
+  color: #f5eee6;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  z-index: 10;
 
+  position: absolute;
+  top: 225px;         
+  left: 88.5%;          
+}
 
-
+.about a[href="#bottomPage"]:hover {
+  background-color: #712f2e;
+  transform: scale(1.05);
+}
