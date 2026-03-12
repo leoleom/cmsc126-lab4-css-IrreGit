@@ -72,6 +72,14 @@ COLORS:
  
 
  */
+/* define variables here for general usage... */
+:root{
+   --sidepanel-width: 22%;
+   --sidepanel-minwidth: 300px;
+   --banner-maxheight: 200px;
+   --banner-height: 14%; 
+   --body-padding: 20px;
+}
 
  /* ------------- IMPORTS ------------- */
 @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
@@ -79,8 +87,100 @@ COLORS:
 
  /* ------------- PRESETS (Note: DO NOT TOUCH THIS AREA)------------- */
 body {
-  background-color: #a38a59;
+   background-color: #a38a59;
+   margin: 0;
+
+   text-align: center;
+
+   padding: 0;
+   padding-left: calc(max(var(--sidepanel-width), var(--sidepanel-minwidth)) + var(--body-padding));
+   padding-right: var(--body-padding);
+   padding-top: 200px;
+
+   max-width: calc(100% - var(--sidepanel-width));
+   overflow-x: hidden;
+   font-family: "Darumadrop One", sans-serif;
 }
+
+/* The Side Panel: used by all pages */
+header, .navBar, body > hr:nth-of-type(2), footer{
+   z-index: 10;
+   position: fixed;
+   left: 0;
+
+   width: var(--sidepanel-width);
+   min-width: var(--sidepanel-minwidth);
+   height: auto;
+   
+   margin: 5px 0;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+
+   box-sizing: border-box;
+}
+
+header{ 
+   top: 32%; line-height: 1;
+}
+
+header hr{ 
+   display: none;
+}
+
+.navBar { 
+   top: 46%; gap: 12px;
+}
+
+.navBar a {
+   color: inherit;
+   text-decoration: none;
+   text-transform: uppercase;
+   font-weight: bold;
+
+   border-top: 1px solid;
+   border-bottom: 1px solid;
+
+   width: 50%;
+   height: 36px;
+   display: flex;
+
+   justify-content: center;
+   align-items: center;
+}
+
+.navBar a:hover {
+  background-color: #8c734b;
+  transition: background-color 0.1s ease; 
+}
+
+footer { 
+   top: 68%; line-height: 2; font-size: 12px;
+}
+
+#banner[title="Coffee Banner"]{
+   position: absolute;
+
+   top: 0;
+   left: max(var(--sidepanel-width), var(--sidepanel-minwidth));
+   margin-top: 0;
+   display: block;
+
+   object-fit: cover;
+   object-position: center 75%;
+
+   height: 200px;
+   width: calc(100% - max(var(--sidepanel-width), var(--sidepanel-minwidth)));
+
+   box-sizing: border-box;
+   z-index: -1;
+}
+
+/* hiding these irrelevant pieces parts*/
+a[href="#bottomPage"], a[href="#title"], body > br:nth-of-type(-n+2), footer #title{display: none}
 
 p {
     font-family: "Zen Maru Gothic", sans-serif;
@@ -88,18 +188,159 @@ p {
     color: #f5eee6;
    }
 
-
-
-
-
-
-
 /* ------------- HOME PAGE (MEMBER 1)------------- */
 
+.home {
+   padding-top: 700px;
+   position: relative;
+}
+/* ------------- HOME PAGE (MEMBER 1)------------- */
 
+.home #banner {
+   height: 700px;
+}
 
+.home > #welcome {
+   position: absolute;
+   
+   top: 600px;
+   margin: 0px;
+   width: 100%;
 
+   font-size: 0;
+   line-height: 1.2;
+   backdrop-filter: blur(5px);
+
+  text-align: left;
+}
+.home > #welcome::before {
+  content: "Welcome to the official website of Vinze and Baboy's Coffee Shop.";
+  
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+}
+.home > #welcome::after {
+  content: "We are open from 10:00 AM - 9:00 PM.\a Try our VABulous drinks and pastries.";
+  
+  font-size: 16px;
+  font-weight: normal;
+  font-style: italic;
+  white-space: pre;
+  display: block;
+}
+
+.home > .coffee:first-of-type{
+   margin-top: 750px;
+}
+
+.home > .coffee h2 {
+   position: sticky;
+   top: 0;
+   z-index: 5;
+   
+   /* underline */
+   display: table;
+   min-width: 200px;
+   width: auto;
+   margin-left: 0;
+   margin-right: auto;
+   margin-top: 0;
+   margin-bottom: 10px;
+
+   padding: 20px 20px 10px 2%;
+   text-align: left;
+   
+   /* cover back elements */
+   background-color: #a38a59;
+}
+
+.home > .coffee h2::before {
+   z-index: -1; 
+
+   content: "";
+   position: absolute;
+   top: 0;
+   
+   left: -100vw; 
+   right: -100vw;
+   bottom: 0;
+   
+   background-color: #a38a59; 
+}
 /* ------------- ORDER PAGE (MEMBER 2)------------- */
+
+
+.home > .coffee h2::after {
+   content: "";
+   display: block;
+   width: 115%; 
+   height: 4px;
+   background-color: #bdb487; 
+   margin-top: 5px; 
+   margin-left: -2%; 
+   border-radius: 2px;
+}
+
+.home > .coffee ol{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(405px, 1fr));
+   gap: 20px;
+   
+   align-items: start;
+   text-align: center;
+
+   padding: 20;
+   margin: 0px 0px 50px 0px;
+   list-style: none;
+   width: 90%;
+   box-sizing: border-box;
+}
+
+.home > .coffee ol li{
+   display: block;
+   height: fit-content;
+
+   justify-self: start;
+
+   position: relative;
+   border: 2px solid #000000;
+   border-radius: 10px;
+   padding: 20px 20px 20px 60px;
+   
+   text-align: left;
+   box-sizing: border-box;   
+   counter-increment: number;
+
+   animation: revealItem linear both;
+   animation-timeline: view();
+   animation-range: entry 20% entry 80%;
+}
+.home > .coffee ol li::before {
+  content: counter(number); 
+  position: absolute;
+  top: 25px;
+  left: 25px;
+
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.home > .coffee {
+   align-items: center;
+   text-align: center;
+   display: block;
+   width: 100%;
+
+   animation: revealItem linear both;
+   animation-timeline: view();
+   animation-range: entry 20% entry 80%;
+}
+
+.home > .coffee img{
+   padding: 50px 50px 0px 0px;
+}
 
 /* SIDEBAR & BASE LAYOUT */
 body.order {
@@ -368,3 +609,376 @@ body.order::before {
 .order > div > a[href="#title"]:hover { background-color: #712f2e; }
 
 /* ------------- ABOUT PAGE (MEMBER 3)------------- */
+@keyframes revealItem {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.home > .coffee > .definition {
+   padding: 0px 50px 0px 0px;
+}
+
+.home #orderCoffee {
+   padding: 20px;
+   margin: 0px 50px 0px 0px;
+   font-weight: bold;
+}
+
+.home .coffee #bottomPage{
+   padding-top: 0;
+   padding-bottom: 50px;
+
+/* ------------- ABOUT PAGE (MEMBER 3)------------- */
+.about {display: block;}
+
+.about::before {
+  content: " ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;           
+  height: 100%;                
+  padding: 20px;
+  background-color: #181716; 
+  z-index: 1;                 
+}
+
+/*------------------------( LOGO )------------------------*/
+
+.about img[alt="VAB Coffee Shop Logo"] {
+  position: fixed;
+  top: 20px;                
+  left: 50%;
+  transform: translateX(-785%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;        
+  object-fit: cover;         
+  border: 2px solid #f5eee6;
+  z-index: 2;
+}
+
+/*------------------------( HEADER )------------------------*/
+
+.about header {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 280px;
+  padding: 20px;
+  z-index: 2;
+  font-family: "Darumadrop One", sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  text-align: center;
+  color: #f5eee6;
+}
+
+.about header::before {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 10px auto;        
+}
+
+/*------------------------( TITLE )------------------------*/
+
+.about #title {
+  font-family: "Darumadrop One", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  color: #f5eee6;
+  margin-top: 20px;
+}
+
+/*------------------------( NAVIGATION )------------------------*/
+
+.about .navBar {
+  position: fixed;
+  top: 290px;             
+  left: 35px;
+  width: 250px;
+  margin-top: 10px;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  align-items: flex-start;
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 600;
+}
+
+.about .navigation {
+  display: block;
+  margin: 10px 0;
+  color: #f5eee6;
+  text-decoration: none;
+}
+
+.about .navBar .navigation::before {
+  display: block;          
+  font-size: 20px;         
+  margin-bottom: 5px;     
+  color: #ffffff;
+}
+
+/* Links styling */
+.about .navBar .navigation {
+  display: flex;             
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;                 
+
+  font-size: 14px;
+  color: #f5eee6;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.about .navBar .navigation:hover {
+  color: #e3c19d;
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: scale(1.1); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); 
+  cursor: pointer;
+
+}
+
+.about .navBar .navigation:nth-child(1)::before {content: "\1F3E0"; /* Home icon */}
+.about .navBar .navigation:nth-child(2)::before {content: "\1F4DD"; /* Order icon */}
+.about .navBar .navigation:nth-child(3)::before {content: "\1F464"; /* About icon */}
+
+
+/*------------------------( FOOTER )------------------------*/
+
+.about footer {
+  position: fixed;         
+  bottom: 0;               
+  width: 280px;            
+  left: 0;
+  background-color: #181716; 
+  text-align: center;
+  padding: 10px 20px;
+  z-index: 2;              
+  color: #f5eee6;
+}
+
+.about footer #title {
+  font-size: 14px;        
+  color: #f5eee6;         
+  font-weight: normal;     
+  margin: 5px 0;           
+  line-height: 1.3;
+}
+
+.about footer .contacts {
+  font-size: 12px;
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+.about footer p {
+  font-size: 12px;
+  margin: 5px 0;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/*---------------------( CONTENT CONTAINERS )---------------------*/
+
+.about .coffee {
+  margin-left: 350px;
+  max-width: 72.5%;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: rgba(197, 179, 136, 0.85);;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+/*----------------------( BANNER IMAGE )----------------------*/
+
+.about .imgBanner {
+  width: calc(100% - 376px); /* subtract sidebar width */
+  height: 450px;
+  margin-left: 340px; /* pushes banner away from sidebar */
+  border-radius: 10px;
+  position: relative;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.about img[alt="Coffee Banner"]{position: relative;}
+.about img.imgBanner + a + hr {display: none;}
+/*--------------------------( VIDEOS )--------------------------*/
+
+.about .coffeeVideo {
+  width: 300px;
+  height: 170px;
+  border-radius: 8px;
+}
+
+.about .coffeeVideo:hover {
+  transform: scale(1.1); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  cursor: pointer; 
+}
+
+.about .coffee ul {
+  display: flex;           
+  gap: 15px;               
+  flex-wrap: wrap;         
+  justify-content: center; 
+  list-style: none;        
+  padding: 0;              
+}
+
+.about .coffee ul li {flex: 0 0 auto;}
+
+/*-----------------------( TEAM SECTION )-----------------------*/
+
+.about table {
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  overflow-x: auto;
+  text-align: center;
+  position: relative;
+  max-width: 100%;
+  table-layout: fixed;
+}
+
+.about .teamMember {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: flex;
+  margin: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.about .teamMember:hover {
+  transform: scale(1.1); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); 
+  cursor: pointer; 
+}
+
+.about .label {
+  color: #f5eee6;
+  font-size: 14px;
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/*-------------------( PARAGRAPH READABILITY )-------------------*/
+
+.about p {
+  line-height: 1.7;
+  text-align: justify;
+  margin: auto;
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+
+/* CoffeeDrop section */
+.about .coffee img[alt="Aesthetic Coffee"] {
+  width: 290px;            
+  height: 480px;
+  margin-bottom: 10px;      
+  border-radius: 10px;
+  margin-left: 50px;
+  margin-top: auto;
+}
+
+.about .coffee:has(img[alt="Aesthetic Coffee"]) {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 30px;          
+  flex-wrap: wrap;     
+  position: relative;  
+}
+
+.about .coffee:has(img[alt="Aesthetic Coffee"]) p.definition {
+  flex:1;             
+  order: 1;
+  text-align: justify;
+  line-height: 1.7;
+  margin: 10px;
+  margin-right: 25px;
+}
+
+/* HEADINGS */
+.about h1, .about h2 {
+  font-family: "Darumadrop One", sans-serif;
+  color: #f5eee6;
+  text-align: center;
+}
+
+/*---------------------( TEXT HIGHLIGHTS )---------------------*/
+.about .emphasis {color: #8a171f;font-weight: bold;}
+.about .term {color: #282120;font-style: italic;}
+.about .contacts {margin: 10px 0;}
+
+/**---------------------( BACK TO TOP )---------------------*/
+html {scroll-behavior: smooth;}
+
+.about a[href="#bottomPage"] {
+  display: inline-block;
+  margin-left: 340px;
+  padding: 10px 15px;
+  background-color: #a38a59;  
+  color: #f5eee6;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transform: translateY(-80%);
+  transition: background-color 0.3s ease , transform 0.2s ease;
+  z-index: 4;
+}
+
+.about a[href="#bottomPage"]:hover {background-color: #a66d42; transform: scale(1.05);}
+
+.about a[href="#title"] {
+  display: inline-block;       
+  margin: 20px auto;
+  margin-left: 50px;
+  padding: 10px 15px;
+  background-color: #a38a59;  
+  color: #fff;               
+  font-weight: 600;
+  text-decoration: none;       
+  border-radius: 8px;
+  z-index: 999;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.about a[href="#title"]:hover {
+  background-color: #a66d42;  
+  transform: scale(1.05);
+}
+
+
+
+
+
