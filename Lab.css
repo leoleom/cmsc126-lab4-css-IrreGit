@@ -89,22 +89,23 @@ COLORS:
 
  /* ------------- PRESETS (Note: DO NOT TOUCH THIS AREA)------------- */
 body {
-  background-color: #a38a59;
-
+   background-color: #a38a59;
    margin: 0;
+
+   text-align: center;
+
    padding: 0;
    padding-left: calc(max(var(--sidepanel-width), var(--sidepanel-minwidth)) + var(--body-padding));
    padding-right: var(--body-padding);
    padding-top: 200px;
 
-   text-align: center;
-
    max-width: calc(100% - var(--sidepanel-width));
    overflow-x: hidden;
+   font-family: "Darumadrop One", sans-serif;
 }
 
 /* The Side Panel: used by all pages */
-header, .navBar, footer{
+header, .navBar, body > hr:nth-of-type(2), footer{
    z-index: 10;
    position: fixed;
    left: 0;
@@ -123,11 +124,32 @@ header, .navBar, footer{
 
    box-sizing: border-box;
 }
-header{top: 20%}
-.navBar {top: 40%; gap: 25px;}
-footer {bottom: 15%;}
+header{ top: 32%; line-height: 1;}
+header hr{ display: none;}
+.navBar { top: 46%; gap: 12px;}
+.navBar a {
+   color: inherit;
+   text-decoration: none;
+   text-transform: uppercase;
+   font-weight: bold;
 
-#banner {
+   border-top: 1px solid;
+   border-bottom: 1px solid;
+
+   width: 50%;
+   height: 36px;
+   display: flex;
+
+   justify-content: center;
+   align-items: center;
+}
+.navBar a:hover {
+  background-color: #8c734b;
+  transition: background-color 0.1s ease; 
+}
+footer { top: 68%; line-height: 2; font-size: 12px;}
+
+#banner[title="Coffee Banner"]{
    position: absolute;
 
    top: 0;
@@ -145,7 +167,8 @@ footer {bottom: 15%;}
    z-index: -1;
 }
 
-
+/* hiding these irrelevant pieces of shit */
+a[href="#bottomPage"], a[href="#title"], body > br:nth-of-type(-n+2), footer #title{display: none}
 
 p {
     font-family: "Zen Maru Gothic", sans-serif;
@@ -153,15 +176,148 @@ p {
     color: #f5eee6;
    }
 
-
-
-
-
-
-
 /* ------------- HOME PAGE (MEMBER 1)------------- */
+.home > #welcome {
+  font-size: 0;
+  line-height: 1.2;
 
+  text-align: left;
 
+  margin: 10px;
+}
+.home > #welcome::before {
+  content: "Welcome to the official website of Vinze and Baboy's Coffee Shop.";
+  
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+}
+.home > #welcome::after {
+  content: "We are open from 10:00 AM - 9:00 PM.\a Try our VABulous drinks and pastries.";
+  
+  font-size: 16px;
+  font-weight: normal;
+  font-style: italic;
+  white-space: pre;
+  display: block;
+}
+
+.home > .coffee h2 {
+   position: sticky;
+   top: 0;
+   z-index: 5;
+   
+   /* underline */
+   display: table;
+   min-width: 200px;
+   width: auto;
+   margin-left: 0;
+   margin-right: auto;
+   margin-top: 0;
+   margin-bottom: 10px;
+
+   padding: 20px 20px 10px 2%;
+   text-align: left;
+   
+   /* cover back elements */
+   background-color: #a38a59;
+}
+
+.home > .coffee h2::before {
+   z-index: -1; 
+
+   content: "";
+   position: absolute;
+   top: 0;
+   
+   left: -100vw; 
+   right: -100vw;
+   bottom: 0;
+   
+   background-color: #a38a59; 
+}
+
+.home > .coffee h2::after {
+   content: "";
+   display: block;
+   width: 115%; 
+   height: 4px;
+   background-color: #bdb487; 
+   margin-top: 5px; 
+   margin-left: -2%; 
+   border-radius: 2px;
+}
+
+.home > .coffee ol{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(405px, 1fr));
+   gap: 20px;
+   
+   align-items: start;
+   text-align: center;
+
+   padding: 20;
+   margin: 0;
+   list-style: none;
+   width: 90%;
+   box-sizing: border-box;
+}
+
+.home > .coffee ol li{
+   display: block;
+   height: fit-content;
+
+   justify-self: start;
+
+   position: relative;
+   border: 2px solid #000000;
+   border-radius: 10px;
+   padding: 20px 20px 20px 60px;
+   
+   text-align: left;
+   box-sizing: border-box;   
+   counter-increment: number;
+
+   animation: revealItem linear both;
+   animation-timeline: view();
+   animation-range: entry 20% entry 80%;
+}
+.home > .coffee ol li::before {
+  content: counter(number); 
+  position: absolute;
+  top: 25px;
+  left: 25px;
+
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.home > .coffee {
+   align-items: center;
+   text-align: center;
+   display: block;
+   width: 100%;
+   margin: 0;
+}
+
+.home > .coffee img{
+   padding-left: 0;
+   padding-right: 0;
+}
+
+@keyframes revealItem {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
 
 
 /* ------------- ORDER PAGE (MEMBER 2)------------- */
