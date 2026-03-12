@@ -31,8 +31,6 @@ Focus on applying proper CSS techniques such as:
 
 */
 
-
-
 /* ASSETS
 
 COLORS:
@@ -343,6 +341,273 @@ p {
    padding: 50px 50px 0px 0px;
 }
 
+/* SIDEBAR & BASE LAYOUT */
+body.order {
+    padding-left: 280px; 
+    position: relative;
+}
+
+/* Create the Sidebar Band */
+body.order::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: 280px;
+    background-color: #712f2e; 
+    border-right: 4px solid #bdb487; 
+    z-index: 0;
+}
+
+/* Hide HTML elements that break the layout */
+.order > br, .order > hr, .order > a[href^="#"] { display: none; }
+
+/* HEADER & NAVIGATION */
+.order header, .order .navBar, .order footer {
+    position: fixed;
+    left: 0;
+    width: 280px;
+    z-index: 10;
+    text-align: center;
+    background: transparent; 
+}
+
+.order header { top: 30px; }
+
+.order header h1 {
+    font-family: "Darumadrop One", sans-serif;
+    color: #f5eee6;
+    font-weight: 400;
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.order .navBar {
+    top: 250px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Emojis as icons */
+.order .navBar a.navigation {
+    font-family: "Darumadrop One", sans-serif;
+    color: #f5eee6;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.order .navBar a.navigation:hover { color: #cfc49c; } 
+.order .navBar a.navigation:nth-child(1)::before { content: "🏠"; font-size: 2rem; margin-bottom: 5px; }
+.order .navBar a.navigation:nth-child(2)::before { content: "📋"; font-size: 2rem; margin-bottom: 5px; }
+.order .navBar a.navigation:nth-child(3)::before { content: "👥"; font-size: 2rem; margin-bottom: 5px; }
+
+.order footer {
+    bottom: 20px;
+    font-size: 0.8rem;
+    color: #e3c19d; 
+    font-family: "Zen Maru Gothic", sans-serif;
+}
+
+/* HERO BANNER */
+.order .imgBanner {
+    position: absolute;
+    top: 0; left: 280px; right: 0;
+    width: calc(100% - 280px);
+    height: 25vh; 
+    object-fit: cover;
+    opacity: 0.3; 
+    z-index: -1;
+}
+
+/* Reset global .coffee containers to prevent conflicts */
+.order .coffee {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    width: auto;
+}
+
+/* MENU SECTION */
+.order .coffee:nth-of-type(1) {
+    margin-top: 30vh; /* Pushed down so it no longer overlaps the banner! */
+    padding: 0 40px; 
+    text-align: center; /* Centers the inner content */
+}
+
+.order #tagline, .order h2 {
+    text-align: center; /* Changed from left to center */
+    font-family: "Darumadrop One", sans-serif;
+    color: #f5eee6;
+    margin-bottom: 20px;
+}
+
+.order #tagline {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 1.2rem;
+}
+
+/* The magic fix to center the table at any zoom level */
+.order #coffee_choices {
+    width: max-content; /* Shrinks the table box to tightly hug the images */
+    max-width: 100%; /* Still allows scrolling on tiny screens */
+    margin: 0 auto; /* Centers the whole table box perfectly */
+    overflow-x: auto; 
+    white-space: nowrap;
+    display: block; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+.order #coffee_choices::-webkit-scrollbar { display: none; }
+
+.order .coffeeTitle {
+    font-family: "Darumadrop One", sans-serif;
+    font-size: 1.8rem;
+    color: #cfc49c; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center; /* Changed from left to center */
+}
+
+.order #coffee_choices td {
+    padding: 0 10px; 
+}
+
+.order .coffeeImg {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #bdb487; 
+    border-radius: 8px;
+    margin: 0 auto; 
+    display: block;
+    transition: transform 0.3s;
+}
+.order .coffeeImg:hover { transform: translateY(-5px); cursor: pointer; }
+
+.order td.label {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 1rem;
+    color: #f5eee6;
+    text-align: center;
+    padding-top: 10px;
+    white-space: normal; 
+    width: 150px; 
+    opacity: 0;
+    transform: translateY(-10px); 
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Reveal */
+.order tr:has(td:nth-child(1):hover) + tr td.label:nth-child(1),
+.order tr:has(td:nth-child(2):hover) + tr td.label:nth-child(2),
+.order tr:has(td:nth-child(3):hover) + tr td.label:nth-child(3),
+.order tr:has(td:nth-child(4):hover) + tr td.label:nth-child(4),
+.order tr:has(td:nth-child(5):hover) + tr td.label:nth-child(5),
+.order tr:has(td:nth-child(6):hover) + tr td.label:nth-child(6),
+.order tr:has(td:nth-child(7):hover) + tr td.label:nth-child(7),
+.order td.label:hover { opacity: 1; transform: translateY(0); }
+
+/* FORM SECTION */
+.order .coffee:nth-of-type(2) {
+    margin: 60px auto;
+    text-align: center; /* Ensures inner elements obey centering */
+    width: 100%;
+}
+
+.order form {
+    margin: 0 auto; /* Forces the box to lock to the dead center! */
+    width: 55%; 
+    min-width: 400px; 
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px; 
+    background-color: #bb6d46; 
+    padding: 40px; 
+    border-radius: 15px;
+    border: 2px solid #bdb487;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.order form br { display: none; } 
+
+.order form label {
+    grid-column: 1 / -1; 
+    text-align: center;
+    font-family: "Zen Maru Gothic", sans-serif;
+    color: #f5eee6;
+    margin-top: 5px; 
+    margin-bottom: 0px; 
+    font-weight: 700;
+}
+
+.order form input[type="text"],
+.order form input[type="email"] {
+    grid-column: 1 / -1;
+    width: 90%; 
+    justify-self: center; 
+    padding: 10px; 
+    background-color: #e3c19d; 
+    border: none;
+    color: #181716;
+    font-family: "Zen Maru Gothic", sans-serif;
+    border-radius: 5px;
+    text-align: center; 
+}
+
+.order form select#drink { 
+    grid-column: 1; 
+    width: 100%;
+    padding: 10px;
+    background-color: #282120; 
+    border: 1px solid #bdb487; 
+    color: #f5eee6;
+    font-family: "Zen Maru Gothic", sans-serif;
+    border-radius: 20px; 
+    text-align: center;
+}
+
+.order form input[type="submit"] {
+    grid-column: 2; 
+    width: 100%;
+    padding: 10px;
+    background-color: #282120; 
+    border: 1px solid #bdb487;
+    color: #f5eee6;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 20px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.order form input[type="submit"]:hover { background-color: #712f2e; }
+
+/* FOOTER LINK */
+.order > div > a[href="#title"] {
+    display: block;
+    width: 150px;
+    margin: 30px auto 50px auto;
+    padding: 10px;
+    background-color: #bb6d46;
+    color: #f5eee6;
+    text-align: center;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid #bdb487;
+    transition: background-color 0.3s;
+}
+.order > div > a[href="#title"]:hover { background-color: #712f2e; }
+
+/* ------------- ABOUT PAGE (MEMBER 3)------------- */
 @keyframes revealItem {
   from {
     opacity: 0;
