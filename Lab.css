@@ -321,7 +321,7 @@ a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #titl
   /* underline */
   display: table;
   min-width: 200px;
-  width: auto;
+
   margin-left: 0;
   margin-right: auto;
   margin-top: 0;
@@ -426,6 +426,8 @@ a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #titl
 
 .home>.coffee>.definition {
   margin: 40px auto;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .home a:has(#orderCoffee) {
@@ -616,6 +618,7 @@ a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #titl
   min-width: 400px;
   max-width: 600px;
   display: grid;
+  margin-bottom: 100px;
   grid-template-columns: 2fr 1fr;
   gap: 15px;
   background-color: #bb6d46;
@@ -681,7 +684,7 @@ a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #titl
   transform: scale(1.05);
 }
 
-.order a[href="#title"] {
+/* .order a[href="#title"] {
   display: block;
   width: fit-content;
   margin-top: 40px;
@@ -701,7 +704,7 @@ a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #titl
 .order a[href="#title"]:hover{
   background-color: #712f2e;
   transform: scale(1.05);
-}
+} */
 
 
 /* ------------- ABOUT PAGE (MEMBER 3)------------- */
@@ -883,7 +886,7 @@ a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #titl
 html {
   scroll-behavior: smooth;
 }
-
+/* 
 .about a[href="#title"] {
   display: block;
   width: fit-content;
@@ -904,10 +907,10 @@ html {
 .about a[href="#title"]:hover {
   background-color: #712f2e;
   transform: scale(1.05);
-}
+} */
 
 
-.about a[href="#bottomPage"] {
+/* .about a[href="#bottomPage"] {
   display: inline-block;
   margin-left: 0px;
   padding: 10px 15px;
@@ -927,4 +930,4 @@ html {
 .about a[href="#bottomPage"]:hover {
   background-color: #712f2e;
   transform: scale(1.05);
-}
+} */
