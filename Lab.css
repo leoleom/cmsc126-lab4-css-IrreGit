@@ -266,8 +266,12 @@ a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #titl
 /* ------------- HOME PAGE (MEMBER 1)------------- */
 
 .home {
-  padding-top: 670px;
+  padding-top: 710px;
   position: relative;
+}
+
+.home hr:first-of-type{
+  display: none;
 }
 
 .home #banner {
@@ -321,13 +325,15 @@ a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #titl
   /* underline */
   display: table;
   min-width: 200px;
+  background-color: #bb6d46;
 
   margin-left: 0;
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 10px;
 
-  padding: 20px 20px 10px 2%;
+  padding: 20px 40px 20px 2%;
+  color:#fff;
   text-align: left;
 
 }
@@ -343,17 +349,6 @@ a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #titl
   right: -100vw;
   bottom: 0;
 
-}
-
-.home>.coffee h2::after {
-  content: "";
-  display: block;
-  width: 115%;
-  height: 4px;
-  background-color: #bdb487;
-  margin-top: 5px;
-  margin-left: -2%;
-  border-radius: 2px;
 }
 
 .home>.coffee ol {
@@ -426,8 +421,10 @@ a[href="#bottomPage"], a[href="#title"], body>br:nth-of-type(-n+2), footer #titl
 
 .home>.coffee>.definition {
   margin: 40px auto;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+  font-size: 20px;
+  text-align: justify;
 }
 
 .home a:has(#orderCoffee) {
@@ -910,7 +907,7 @@ html {
 } */
 
 
-/* .about a[href="#bottomPage"] {
+.about a[href="#bottomPage"] {
   display: inline-block;
   margin-left: 0px;
   padding: 10px 15px;
@@ -930,4 +927,4 @@ html {
 .about a[href="#bottomPage"]:hover {
   background-color: #712f2e;
   transform: scale(1.05);
-} */
+}
